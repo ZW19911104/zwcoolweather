@@ -6,8 +6,8 @@
     <RelativeLayout android:layout_width="match_parent"
                     android:background="#484E61"
                     android:layout_height="50dp">
-        <Button android:layout_width="50dp"
-                android:text="切换"
+        <Button android:layout_width="30dp"
+                android:background="@drawable/home"
                 android:textSize="12sp"
                 android:id="@+id/switch_city"
                 android:layout_centerVertical="true"
@@ -19,8 +19,8 @@
                   android:textColor="#fff"
                   android:textSize="24sp"
                   android:layout_height="wrap_content"/>
-        <Button android:layout_width="50dp"
-                android:text="更新"
+        <Button android:layout_width="30dp"
+                android:background="@drawable/refresh"
                 android:textSize="12sp"
                 android:id="@+id/refresh_weather"
                 android:layout_alignParentRight="true"

@@ -16,7 +16,6 @@ import com.zw.coolweather.service.AutoUpdateService;
 import com.zw.coolweather.util.HttpCallbackListener;
 import com.zw.coolweather.util.HttpUtil;
 import com.zw.coolweather.util.Utility;
-import org.w3c.dom.Text;
 
 /**
  * 包名：com.zw.coolweather.activity
@@ -109,6 +108,7 @@ public class WeatherActivity extends Activity implements View.OnClickListener{
      * @param weatherCode
      */
     private void queryWeatherInfo(String weatherCode){
+        //
         String address = "http://www.weather.com.cn/data/cityinfo/"+weatherCode+".html";
         queryFromServer(address,"weatherCode");
     }
