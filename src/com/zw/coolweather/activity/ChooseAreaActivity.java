@@ -2,7 +2,10 @@ package com.zw.coolweather.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -73,6 +76,13 @@ public class ChooseAreaActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(prefs.getBoolean("city_selected",false)){
+            Intent intent = new Intent(this,WeatherActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.choose_area);
         listview = (ListView) findViewById(R.id.list_view);
@@ -90,6 +100,12 @@ public class ChooseAreaActivity extends Activity {
                 }else if(currentLevel==LEVEL_CITY){
                     selectedCity = cityList.get(position);
                     queryCounties();//加载县级数据
+                }else if(currentLevel==LEVEL_COUNTY){
+                    String countyCode = countyList.get(position).getCountyCode();
+                    Intent intent = new Intent(ChooseAreaActivity.this,WeatherActivity.class);
+                    intent.putExtra("county_code",countyCode);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -148,7 +164,7 @@ public class ChooseAreaActivity extends Activity {
             adapter.notifyDataSetChanged();
             listview.setSelection(0);
             titleText.setText(selectedCity.getCityName());
-            currentLevel = LEVEL_CITY;
+            currentLevel = LEVEL_COUNTY;
         }else{
             queryFromServer(selectedCity.getCityCode(),"county");
         }
