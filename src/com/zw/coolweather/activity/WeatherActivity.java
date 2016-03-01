@@ -108,7 +108,7 @@ public class WeatherActivity extends Activity implements View.OnClickListener{
      * @param weatherCode
      */
     private void queryWeatherInfo(String weatherCode){
-        //
+        //http://www.weather.com.cn/data/101190404.html 这个比较全返回的信息 
         String address = "http://www.weather.com.cn/data/cityinfo/"+weatherCode+".html";
         queryFromServer(address,"weatherCode");
     }
