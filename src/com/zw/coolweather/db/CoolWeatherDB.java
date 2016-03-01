@@ -110,12 +110,12 @@ public class CoolWeatherDB {
 
     /**
      * 从数据库读取全国所有城市信息
-     *
+     * @param provinceId
      * @return
      */
-    public List<City> loadCitys() {
+    public List<City> loadCitys(int provinceId) {
         List<City> list = new ArrayList<City>();
-        Cursor cursor = db.query("City", null, null, null, null, null, null);
+        Cursor cursor = db.query("City", null, "province_id = ?", new String[]{String.valueOf(provinceId)}, null, null, null);
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
@@ -148,12 +148,12 @@ public class CoolWeatherDB {
 
     /**
      * 从数据库读取全国所有城市信息
-     *
+     * @param cityId
      * @return
      */
-    public List<County> loadCountys() {
+    public List<County> loadCountys(int cityId) {
         List<County> list = new ArrayList<County>();
-        Cursor cursor = db.query("County", null, null, null, null, null, null);
+        Cursor cursor = db.query("County", null, "city_id = ?", new String[]{String.valueOf(cityId)}, null, null, null);
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
