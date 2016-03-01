@@ -23,5 +23,9 @@
                   android:label="@string/app_name">
 
         </activity>
+
+        <receiver android:name=".receiver.AutoUpdateReceiver"/>
+        <service android:name=".service.AutoUpdateService"/>
+
     </application>
 </manifest>
