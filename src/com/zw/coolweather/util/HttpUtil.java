@@ -20,7 +20,7 @@ import java.net.URL;
  */
 public class HttpUtil {
 
-    public static void sendHttpRequest(final String address,final HttpCallbackListener listener){
+    public static void sendHttpRequest(final String address, final HttpCallbackListener listener) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -35,18 +35,18 @@ public class HttpUtil {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(in));
                     StringBuilder response = new StringBuilder();
                     String line;
-                    while ((line=reader.readLine())!=null){
+                    while ((line = reader.readLine()) != null) {
                         response.append(line);
                     }
-                    if(listener!=null){
+                    if (listener != null) {
                         listener.onFinish(response.toString());
                     }
                 } catch (Exception e) {
-                    if(listener!=null){
+                    if (listener != null) {
                         listener.onError(e);
                     }
-                } finally{
-                    if(connection!=null){
+                } finally {
+                    if (connection != null) {
                         connection.disconnect();
                     }
                 }
